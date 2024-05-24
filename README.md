@@ -28,57 +28,59 @@ import { sayHello } from "../src/say-hello"
 
 
 ## Declarasi Variable
-- Typescript bisa secara otomatis mendeteksi tipe data yang sedang di gunakan, tapi juga bisa menentukan secara eksplisit mengggunakan
-```Contoh: 
+- Typescript bisa secara otomatis mendeteksi tipe data yang sedang di gunakan, tapi juga bisa menentukan secara eksplisit mengggunakan.
+```
 const namaVariable :typeData = value;
 ```
 
 
-//// Babel Typescript
-    - untuk menjalankan unit test, kita menggunakan Jest dan Babel
-    - banyak programer yang mengeluh karna proses development lambat karna harus di kompilasi terlebih dahulu
-    - oleh karna itu, kita harus secara regular melakukan pengecekan menggunakan PRINTAH: npx tsc
-    - untuk memastikan tidak ada kode Typescript kita yang bermasalah
+## Babel Typescript
+- untuk menjalankan unit test, kita menggunakan Jest dan Babel
+- banyak programer yang mengeluh karna proses development lambat karna harus di kompilasi terlebih dahulu
+- oleh karna itu, kita harus secara regular melakukan pengecekan menggunakan PRINTAH: npx tsc
+- untuk memastikan tidak ada kode Typescript kita yang bermasalah
 
-    * Jika kita mengubah nilai dari yang sebelumnya string menjadi angka
-        dan ketika kita melakukan testing maka dia tidak error karna kodenya akan 
-        di kompile ke js dulu baru di test
-    * Oleh karna itu kita bisa menggunakan npx tsc untuk memastikan bahwa kode ts kita tidak bermasalah
+*Jika kita mengubah nilai dari yang sebelumnya string menjadi angka dan ketika kita melakukan testing maka dia tidak error karna kodenya akan di kompile ke js dulu baru di test. Oleh karna itu kita bisa menggunakan npx tsc untuk memastikan bahwa kode ts kita tidak bermasalah*
 
 
-//// Typescript Compiler
-    - untuk menjalankan Typescript Compiler secara terus menerus, kita bisa
-    menggunakan PRINTAH: npx tsc --watch
-    - perintah di atas akan menjalankan npx compiler ketika terjadi perubahan pada kode kita
+## Typescript Compiler
+- untuk menjalankan Typescript Compiler secara terus menerus, kita bisa menggunakan PRINTAH: npx tsc --watch
+- perintah di atas akan menjalankan npx compiler ketika terjadi perubahan pada kode kita
 
-//// Declarasi Type Data Array
-    - Di Ts tipe data Array bisa menggunakan tanda TipeData[] atay Array<TipeData>
-    # Contoh: const names: string[] = ['sman','suki','kiki'];
+## Declarasi Type Data Array
+- Di Ts tipe data Array bisa menggunakan tanda TipeData[] atay Array<TipeData>
+```
+const names: string[] = ['sman','suki','kiki'];
+```
 
-  /// Read Only Array
-  - di TS, kita bisa membuat type Array readOnly(tidak bisa di ubah) dengan menggunakan
-  tipe data *ReadonlyArray<Typedata>
-  #/ Contoh: const hobbies: ReadonlyArray<string> = ['makan','joging'];
+## Read Only Array
+- di TS, kita bisa membuat type Array readOnly(tidak bisa di ubah) dengan menggunakan tipe data **ReadonlyArray<Typedata>**
+```
+const hobbies: ReadonlyArray<string> = ['makan','joging'];
+```
+  
+## Tuple
+- Pada kasus tuple bersifat read only(tidak bisa di ubah), kita bisa tambahkan kata kunci read only
+- tuple adalah tipe data Array, yang panjang array dan juga tipe data di tiap index sudah di tentukan
 
-  /// Tuple
-  - Pada kasus tuple bersifat read only(tidak bisa di ubah), kita bisa tambahkan kata kunci read only
-  - tuple adalah tipe data Array, yang panjang array dan juga tipe data di tiap index sudah di tentukan
-    # Contoh: const person: readonly [string, string] = ['tem', 'lep'];
+```
+const person: readonly [string, string] = ['tem', 'lep'];
+```
 
-/// Union Type
-    - pada kasus ketika kita ingin membuat variable yg bisa berubah bentuk tipe data, kita bisa memberi tahunya 
-     menggunakan union type
-    - ecara otomatis Typescript akan memperbolehkan kita untuk mengubah tipe datanya,
-     namun sesuai dengan yang sudah di tentukan di union typenya
+## Union Type
+- pada kasus ketika kita ingin membuat variable yg bisa berubah bentuk tipe data, kita bisa memberi tahunya menggunakan union type
+- ecara otomatis Typescript akan memperbolehkan kita untuk mengubah tipe datanya, namun sesuai dengan yang sudah di tentukan di union typenya
+
+```    
+let sample :number | string | boolean = 'usman';
+sample = 10;
+sample = true;
+```
     
-    # Contoh: let sample :number | string | boolean = 'usman';
-              sample = 10;
-              sample = true;
-    
-/// Alias TYpe Untuk onion TYpe
-    # Contoh: export type ID = string | boolean
+## Alias TYpe Untuk onion TYpe
+Contoh: ```export type ID = string | boolean```
 
-/// Object TYpe
+## Object TYpe
     # Contoh: const data: {id: number, name: string} = {id:1, name: "usman"}
 
 /// Optional Type
