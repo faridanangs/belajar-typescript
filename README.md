@@ -1,8 +1,8 @@
-## Belajar Typescript Dasar
+# Belajar Typescript Dasar
 
 ## Kenapa kita menggunakan typescriptnya di development bukan di dependenci
-    biasanya typescript di gunakan di mode development, karna kode typescript
-    akan di compile lagi menjadi code javascript
+biasanya typescript di gunakan di mode development, karna kode typescript
+akan di compile lagi menjadi code javascript
 
 1. Menambah Typescript
 ```sh
@@ -13,27 +13,25 @@
 ```sh
      npx tsc --init 
 ```
-- semua configurasi akan di buat di file tsconfig.json
-- ubah "module" dari "commonjs" menjadi "ES6"
+3. semua configurasi akan di buat di file tsconfig.json
+4. ubah "module" dari "commonjs" menjadi "ES6" di dalam file tsconfig.json
 
-## Tidak perlu menambah type seperti .js | .ts karna nanti ketika
-di compile tidak error
+## Tidak perlu menambah type seperti .js | .ts ketika import karna nanti ketika di compile tidak error
 ```sh
 import { sayHello } from "../src/say-hello"
 ```
 
-// Include dan Excelude
-    - secara default file ts akan coba dikompilasi oleh Typescript,
-    kadang" kita tidak membutuhkan hal tersebut
-    - misal kita hanya ingin melakukan kompilasi untuk kode program, dan tidak butuh
-    melakukan kompilasi untuk kode unit tersebut
-    - kita bisa menambahkan Include dan Excelude pada tsconfig.json
+## Include dan Excelude
+- Secara default file ts akan coba dikompilasi oleh Typescript,kadang" kita tidak membutuhkan hal tersebut.
+- Misal kita hanya ingin melakukan kompilasi untuk kode program, dan tidak butuh melakukan kompilasi untuk kode unit tersebut.
+- Kita bisa menambahkan Include dan Excelude pada tsconfig.json
 
 
-/// Declarasi Variable
-    - Typescript bisa secara otomatis mendeteksi tipe data yang sedang di gunakan,
-    tapi jiga bisa menentukan secara eksplisit mengggunakan
-    # Contoh: const namaVariable :typeData = value;
+## Declarasi Variable
+- Typescript bisa secara otomatis mendeteksi tipe data yang sedang di gunakan, tapi juga bisa menentukan secara eksplisit mengggunakan
+```Contoh: 
+const namaVariable :typeData = value;
+```
 
 
 //// Babel Typescript
