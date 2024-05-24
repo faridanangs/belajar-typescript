@@ -1,95 +1,111 @@
-Belajar Typescript Dasar
+Belajar TypeScript Dasar
+Kenapa Menggunakan TypeScript di Development Bukan di Dependency
+Biasanya TypeScript digunakan di mode development karena kode TypeScript akan dikompilasi menjadi kode JavaScript.
 
-//// Kenapa kita menggunakan typescriptnya di development bukan di dependenci
-    biasanya typescript di gunakan di mode development, karna kode typescript
-    akan di compile lagi menjadi code javascript
+Menambah TypeScript
+Jalankan perintah:
+sh
+Copy code
+npm i --save-dev typescript
+Setup Proyek TypeScript
+Inisialisasi proyek TypeScript:
+sh
+Copy code
+npx tsc --init
+Semua konfigurasi akan dibuat di file tsconfig.json.
+Ubah nilai "module" dari "commonjs" menjadi "ES6" di file tsconfig.json.
+Penanganan TypeScript File
+Tidak perlu menambah tipe seperti .js atau .ts karena ketika dikompilasi tidak akan error.
 
-// 1. Menambah Typescript
-    - npm i --save-dev typescript
+Contoh:
+typescript
+Copy code
+import { sayHello } from "../src/say-hello";
+Include dan Exclude
+Secara default, semua file .ts akan dikompilasi oleh TypeScript. Namun, kita bisa mengatur file mana yang perlu atau tidak perlu dikompilasi.
 
-// 2. SetUp Typescript project
-    - npx tsc --init
-    - semua configurasi akan di buat di file tsconfig.json
-    - ubah "module" dari "commonjs" menjadi "ES6"
+Misalnya, kita hanya ingin mengkompilasi kode program dan tidak butuh mengkompilasi kode unit test.
+Kita bisa menambahkan pengaturan include dan exclude di tsconfig.json.
+Deklarasi Variabel
+TypeScript bisa otomatis mendeteksi tipe data yang digunakan, namun kita juga bisa menentukan tipe data secara eksplisit.
 
-// Tidak perlu menambah type seperti .js | .ts karna nanti ketika
-    di compile tidak error
-    #  Contoh: import { sayHello } from "../src/say-hello"
+Contoh:
+typescript
+Copy code
+const namaVariable: typeData = value;
+Babel TypeScript
+Untuk menjalankan unit test, kita menggunakan Jest dan Babel.
 
+Banyak programmer yang mengeluh karena proses development lambat karena harus dikompilasi terlebih dahulu.
+Oleh karena itu, kita harus secara rutin melakukan pengecekan dengan perintah:
+sh
+Copy code
+npx tsc
+Ini untuk memastikan tidak ada kode TypeScript yang bermasalah.
+Catatan
+Jika kita mengubah nilai dari string menjadi angka dan melakukan testing, tidak akan ada error karena kode dikompilasi ke JavaScript dulu baru diuji.
+Oleh karena itu, kita bisa menggunakan npx tsc untuk memastikan kode TypeScript kita tidak bermasalah.
+TypeScript Compiler
+Untuk menjalankan TypeScript Compiler secara terus menerus, kita bisa menggunakan perintah:
 
-// Include dan Excelude
-    - secara default file ts akan coba dikompilasi oleh Typescript,
-    kadang" kita tidak membutuhkan hal tersebut
-    - misal kita hanya ingin melakukan kompilasi untuk kode program, dan tidak butuh
-    melakukan kompilasi untuk kode unit tersebut
-    - kita bisa menambahkan Include dan Excelude pada tsconfig.json
+sh
+Copy code
+npx tsc --watch
+Perintah ini akan menjalankan compiler setiap kali ada perubahan pada kode kita.
 
+Deklarasi Tipe Data Array
+Di TypeScript, tipe data Array bisa menggunakan format TipeData[] atau Array<TipeData>.
 
-/// Declarasi Variable
-    - Typescript bisa secara otomatis mendeteksi tipe data yang sedang di gunakan,
-    tapi jiga bisa menentukan secara eksplisit mengggunakan
-    # Contoh: const namaVariable :typeData = value;
+Contoh:
+typescript
+Copy code
+const names: string[] = ['sman', 'suki', 'kiki'];
+Read-Only Array
+Di TypeScript, kita bisa membuat Array yang read-only (tidak bisa diubah) dengan menggunakan tipe data ReadonlyArray<TipeData>.
 
+Contoh:
+typescript
+Copy code
+const hobbies: ReadonlyArray<string> = ['makan', 'joging'];
+Tuple
+Pada kasus tuple yang bersifat read-only, kita bisa tambahkan kata kunci readonly.
 
-//// Babel Typescript
-    - untuk menjalankan unit test, kita menggunakan Jest dan Babel
-    - banyak programer yang mengeluh karna proses development lambat karna harus di kompilasi terlebih dahulu
-    - oleh karna itu, kita harus secara regular melakukan pengecekan menggunakan PRINTAH: npx tsc
-    - untuk memastikan tidak ada kode Typescript kita yang bermasalah
+Tuple adalah tipe data Array, di mana panjang array dan tipe data di tiap indeks sudah ditentukan.
+Contoh:
+typescript
+Copy code
+const person: readonly [string, string] = ['tem', 'lep'];
+Union Type
+Ketika kita ingin membuat variabel yang bisa berubah tipe data, kita bisa menggunakan union type.
 
-    * Jika kita mengubah nilai dari yang sebelumnya string menjadi angka
-        dan ketika kita melakukan testing maka dia tidak error karna kodenya akan 
-        di kompile ke js dulu baru di test
-    * Oleh karna itu kita bisa menggunakan npx tsc untuk memastikan bahwa kode ts kita tidak bermasalah
+TypeScript akan memperbolehkan kita untuk mengubah tipe datanya sesuai yang sudah ditentukan di union type.
+Contoh:
+typescript
+Copy code
+let sample: number | string | boolean = 'usman';
+sample = 10;
+sample = true;
+Alias Type untuk Union Type
+Contoh:
+typescript
+Copy code
+export type ID = string | boolean;
+Object Type
+Contoh:
+typescript
+Copy code
+const data: {id: number, name: string} = {id: 1, name: "usman"};
+Optional Type
+Saat membuat atribut, secara default harus diisi semuanya. Jika kita tidak mau mengisi atributnya, kita bisa menggunakan tanda ? untuk menandakan bahwa itu adalah optional.
 
+Enum
+Secara default, enum di TypeScript akan dikonversi menjadi tipe data number. Kadang kita ingin mengubahnya menjadi string, kita bisa melakukan hal itu ketika membuat enum.
 
-//// Typescript Compiler
-    - untuk menjalankan Typescript Compiler secara terus menerus, kita bisa
-    menggunakan PRINTAH: npx tsc --watch
-    - perintah di atas akan menjalankan npx compiler ketika terjadi perubahan pada kode kita
-
-//// Declarasi Type Data Array
-    - Di Ts tipe data Array bisa menggunakan tanda TipeData[] atay Array<TipeData>
-    # Contoh: const names: string[] = ['sman','suki','kiki'];
-
-  /// Read Only Array
-  - di TS, kita bisa membuat type Array readOnly(tidak bisa di ubah) dengan menggunakan
-  tipe data *ReadonlyArray<Typedata>
-  # Contoh: const hobbies: ReadonlyArray<string> = ['makan','joging'];
-
-  /// Tuple
-  - Pada kasus tuple bersifat read only(tidak bisa di ubah), kita bisa tambahkan kata kunci read only
-  - tuple adalah tipe data Array, yang panjang array dan juga tipe data di tiap index sudah di tentukan
-    # Contoh: const person: readonly [string, string] = ['tem', 'lep'];
-
-/// Union Type
-    - pada kasus ketika kita ingin membuat variable yg bisa berubah bentuk tipe data, kita bisa memberi tahunya 
-     menggunakan union type
-    - ecara otomatis Typescript akan memperbolehkan kita untuk mengubah tipe datanya,
-     namun sesuai dengan yang sudah di tentukan di union typenya
-    
-    # Contoh: let sample :number | string | boolean = 'usman';
-              sample = 10;
-              sample = true;
-    
-/// Alias TYpe Untuk onion TYpe
-    # Contoh: export type ID = string | boolean
-
-/// Object TYpe
-    # Contoh: const data: {id: number, name: string} = {id:1, name: "usman"}
-
-/// Optional Type
-    - saat membuat atribute secara default harus di isi semuanya
-    - jika kita tidak mau mengisi atributnya kita bisa menggunakan tanda ? untuk menandakan
-      bahwa itu adalah optional
-
-/// Enum
-    - secara default, enum di TypeScipt akan di konversi menjadi tipe data number
-    - kadang kita ingin mengubahnya dari number menjadi string, kita bisa melakukan hal itu
-       ketika membuat enumnya
-    # Contoh: 
-        export enum CustomerType {
-            Gold = "Gold",
-            Silver = "Silver"
-        }
-    * Jka tidak seperti contoh di atas maka nilai defaulnya akan menjadi number
+Contoh:
+typescript
+Copy code
+export enum CustomerType {
+    Gold = "Gold",
+    Silver = "Silver"
+}
+Jika tidak seperti contoh di atas, nilai defaultnya akan menjadi number.
