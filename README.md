@@ -90,7 +90,7 @@ const data: {id: number, name: string} = {id:1, name: "usman"}
 - saat membuat atribute secara default harus di isi semuanya
 - jika kita tidak mau mengisi atributnya kita bisa menggunakan tanda ? untuk menandakan bahwa itu adalah optional
 ### Contoh:
-'''
+```
 export type Product = {
     id: ID;
     name: string;
@@ -98,7 +98,7 @@ export type Product = {
     description?: string;
     category: Category;
 }
-'''
+```
 
 ## Enum
 - secara default, enum di TypeScipt akan di konversi menjadi tipe data number
