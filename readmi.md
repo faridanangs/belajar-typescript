@@ -71,3 +71,25 @@ Belajar Typescript Dasar
     # Contoh: let sample :number | string | boolean = 'usman';
               sample = 10;
               sample = true;
+    
+/// Alias TYpe Untuk onion TYpe
+    # Contoh: export type ID = string | boolean
+
+/// Object TYpe
+    # Contoh: const data: {id: number, name: string} = {id:1, name: "usman"}
+
+/// Optional Type
+    - saat membuat atribute secara default harus di isi semuanya
+    - jika kita tidak mau mengisi atributnya kita bisa menggunakan tanda ? untuk menandakan
+      bahwa itu adalah optional
+
+/// Enum
+    - secara default, enum di TypeScipt akan di konversi menjadi tipe data number
+    - kadang kita ingin mengubahnya dari number menjadi string, kita bisa melakukan hal itu
+       ketika membuat enumnya
+    # Contoh: 
+        export enum CustomerType {
+            Gold = "Gold",
+            Silver = "Silver"
+        }
+    * Jka tidak seperti contoh di atas maka nilai defaulnya akan menjadi number
