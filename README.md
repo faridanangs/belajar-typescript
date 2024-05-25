@@ -191,3 +191,45 @@ const person:Person = {
 console.log(person.sapaDia("joko"));
 console.log(person.name)
 ```
+
+## Intersection Types
+- interaction merupakan cara membuat tipe data baru dengan cara menggabungkan dua tipe data lain
+- hal ini sangat cocok ketika kita tidak bisa melakukan extends pada interface
+- kita bisa membuat type dengan menggunakan kata kunci & (dan)
+```
+
+interface value1 {
+    id: number
+}
+
+interface value2 {
+    name: string
+}
+
+// cara 1
+// interface domain extends value1, value2{}
+
+// cara 2
+type domain = value1 & value2;
+
+const test: domain = {
+    id: 1,
+    name: "usman",
+}
+```
+
+## Type Assertions
+- kadang kita sering berada pada situasi dimana kita tahu tipe data yang digunakan, namun Typescript tidak tahu tipe data tersebut
+- oleh karna itu kita bisa melakukan konversi ke tipe data yang kita mau menggunakan kata kunci as
+- ini di sebut dengan Type data assertion.
+```
+import { Person } from "../src/interface"
+
+const person1:any ={
+    id: 1,
+    name: 17,
+    }
+
+const person2: Person = person1 as Person;
+```
+- jika nama properti yang ada di dlam person1 sama dengan nama properti ada di dalam Person maka data yang akan di tampilkan jika di console.log(person2.name) adalah data name yang kita berikan di person1

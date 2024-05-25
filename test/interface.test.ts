@@ -1,4 +1,4 @@
-import { Empploye, Manager, Seller, SellerInteface } from "../src/interface"
+import { Empploye, Manager, Person, Seller, SellerInteface } from "../src/interface"
 
 describe("TestAll", ()=> {
     it("Test Interface", ()=> {
@@ -43,10 +43,6 @@ describe("TestAll", ()=> {
         console.log(manager)
     })
     it("Function In Interface Atribute", ()=> {
-        interface Person{
-            name:string,
-            sapaDia(name:string):string;
-        }
 
         const person:Person = {
             name: "usman",
@@ -58,5 +54,39 @@ describe("TestAll", ()=> {
         console.log(person.sapaDia("joko"));
         console.log(person.name)
 
+    })
+
+    it("Intersection Type", ()=> {
+        interface value1 {
+            id: number
+        }
+
+        interface value2 {
+            name: string
+        }
+
+        // cara 1
+        // interface domain extends value1, value2{}
+
+        // cara 2
+        type domain = value1 & value2;
+
+        const test: domain = {
+            id: 1,
+            name: "usman",
+        }
+
+        console.log(test)
+    })
+
+    it("Type assertion", ()=> {
+        const person1:any ={
+            id: 1,
+            name: 17,
+        }
+
+        const person2: Person = person1 as Person
+
+        console.log(person2.name)
     })
 })

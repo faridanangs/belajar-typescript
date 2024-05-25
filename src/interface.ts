@@ -21,3 +21,8 @@ export interface Manager extends Empploye {
     numberOfEmpployed: number;
 }
 
+export interface Person{
+    name:string,
+    sapaDia(name:string):string;
+}
+
