@@ -111,3 +111,47 @@ export enum CustomerType {
         }
 ```
 ***Jka tidak seperti contoh di atas maka nilai defaulnya akan menjadi number***
+
+## Interface
+- interface lebih mudah di kembangkan daripada Type
+- kebanyakan programer Typscript akan menggunakan Interface di banding Type jika type datanya komplek
+- dan cara penggunaanya sama dengan type
+```
+export interface Seller {
+    id: number;
+    name: string;
+    address?: string;
+}
+```
+
+## Readonly Properties
+- jika kita sudah menaruh readonly di dalam propertiesnya maka dia tidak bisa di ubah
+```
+export interface Seller {
+    id: number;
+    name: string;
+    address?: string;
+    readonly nik: string;
+}
+```
+
+## Function Interface
+- dengan function interface kita bisa membuat function di dalam variabel, dan kita bisa dengan mudah menggunakan interface tersebut.
+
+```
+
+export interface SellerInteface{
+    (id: number, name:string, address?:string):string
+}
+
+const seller: SellerInteface = (id: number, name:string,address?:string) : string =>{
+     const seller = {
+          id: id,
+          name: name,
+          address: address,
+     }
+     return JSON.stringify(seller)
+     }
+
+     console.log(seller(1,"usman","sesele"))
+```
