@@ -155,3 +155,39 @@ const seller: SellerInteface = (id: number, name:string,address?:string) : strin
 
      console.log(seller(1,"usman","sesele"))
 ```
+
+## Extending Interface
+- Interface bisa melakukan extending ke interface lain
+- secara otomatis attribute interface yang di lanjutkan dimiliki oleh interface tersebut
+- ini membuat kita lebih mudah ketika membuat tipe data yang kompleks
+
+```
+export interface Empploye {
+    id: number;
+    name: string;
+    division: string;
+}
+
+export interface Manager extends Empploye {
+    numberOfEmpployed: number;
+}
+```
+
+## Function Di Interface
+- kita bisa menambahkan function di dalam interface sebagai atribute
+```
+interface Person{
+     name:string,
+     sapaDia(name:string):string;
+}
+
+const person:Person = {
+     name: "usman",
+     sapaDia(name:string):string{
+     return `halo ${name} my name is ${this.name}`
+     }
+}
+
+console.log(person.sapaDia("joko"));
+console.log(person.name)
+```

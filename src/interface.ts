@@ -9,3 +9,15 @@ export interface Seller {
 export interface SellerInteface{
     (id: number, name:string, address?:string):string
 }
+
+// Extend Interface
+export interface Empploye {
+    id: number;
+    name: string;
+    division: string;
+}
+
+export interface Manager extends Empploye {
+    numberOfEmpployed: number;
+}
+
